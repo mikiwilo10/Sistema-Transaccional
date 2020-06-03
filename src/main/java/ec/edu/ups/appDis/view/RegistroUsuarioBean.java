@@ -1,0 +1,124 @@
+package ec.edu.ups.appDis.view;
+
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+
+import ec.edu.ups.appDis.business.RolON;
+import ec.edu.ups.appDis.business.UsuarioAdminON;
+import ec.edu.ups.appDis.model.Persona;
+import ec.edu.ups.appDis.model.Rol;
+import ec.edu.ups.appDis.model.UsuarioAdministrativo;
+
+@ManagedBean
+@ViewScoped
+public class RegistroUsuarioBean {
+
+	@Inject
+	private RolON ron;
+
+	@Inject
+	private UsuarioAdminON onadmi;
+
+	private UsuarioAdministrativo uadmi;
+
+	private Rol rol;
+
+	private List<Rol> rols;
+
+	private int id;
+
+	private List<UsuarioAdministrativo> listaUAdmi;
+
+	public List<UsuarioAdministrativo> getListaUAdmi() {
+		return listaUAdmi;
+	}
+
+	public void setListaUAdmi(List<UsuarioAdministrativo> listaUAdmi) {
+		this.listaUAdmi = listaUAdmi;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public UsuarioAdministrativo getUadmi() {
+		return uadmi;
+	}
+
+	public void setUadmi(UsuarioAdministrativo uadmi) {
+		this.uadmi = uadmi;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	public List<Rol> getRols() {
+		return rols;
+	}
+
+	public void setRols(List<Rol> rols) {
+		this.rols = rols;
+	}
+
+	@PostConstruct
+	public void init() {
+		rols = ron.listaRol();
+
+		uadmi = new UsuarioAdministrativo();
+
+//		//on.buscarPersona(p.getCorreo(), p.getClave());
+		recuperarUAdmi();
+	}
+
+	public String guardarDatos() {
+		try {
+			// ron.crearRol(rol);
+			rol = new Rol();
+			// rol.setIdrol(uadmi.getIdusuario());
+			// rol.setIdrol(id);
+			uadmi.setRol(ron.buscar(id));
+			onadmi.crearUsuarioAdmi(uadmi);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "listar";
+	}
+
+	public void recuperarUAdmi() {
+		try {
+			listaUAdmi = onadmi.listarUAdmi();
+////			List<Persona> listaper2=on.recuperarPersona();
+////			
+////			for (Persona persona : listaper2) {
+////				System.out.println("Cedula"+ persona.getCedula());
+////				System.out.println("Nombre"+ persona.getNombre());
+////				System.out.println("Apellido"+ persona.getApellido());
+////				System.out.println("-----"+ persona.getTelefono());	
+////			}
+//			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error al Listar" + e.getMessage());
+		}
+
+	}
+	
+	public void eliminar() {
+		
+	}
+
+}

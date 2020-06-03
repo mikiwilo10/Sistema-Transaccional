@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head></h:head>
+<h:body>
+	<h:form>
+		<p:outputLabel value="Select Event:" />
+		<h1>Welcom at System</h1>
+		<h:outputLabel for="nombre" value="Nombre:" />
+		<h:inputText id="nombre" value="#{registroUsuarioBean.uadmi.nombre}" />
+		<br />
+		<br />
+		<h:outputLabel for="apellido" value="Apellido:" />
+		<h:inputText value="#{registroUsuarioBean.uadmi.apellido}" />
+		<br />
+		<br />
+		<h:outputLabel for="Usuario" value="Usuario:" />
+		<h:inputText value="#{registroUsuarioBean.uadmi.usuario}" />
+		<br />
+		<br />
+		<h:outputLabel for="clave" value="Clave:" />
+		<h:inputText value="#{registroUsuarioBean.uadmi.contrasena}" />
+		<br />
+		<br />
+
+		<h:outputLabel for="roles" value="Rol:" />
+
+		<h:selectOneMenu id="roles" value="#{registroUsuarioBean.id}">
+			<f:selectItems value="#{registroUsuarioBean.rols}" var="listarol"
+				itemLabel="#{listarol.nombre}" itemValue="#{listarol.idrol}" />
+		</h:selectOneMenu>
+		<br />
+		<br />
+
+
+
+		<div>
+			<div>
+				<h:commandButton action="#{registroUsuarioBean.guardarDatos()}"
+					value="Guardar" />
+			</div>
+		</div>
+
+
+
+	</h:form>
+</h:body>
+</html>
