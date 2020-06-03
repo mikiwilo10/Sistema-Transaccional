@@ -133,10 +133,10 @@ public class RegistroPersona extends HttpServlet {
 		onadmi.crearUsuarioAdmi(admi);
 		onadmi.crearUsuarioAdmi(admi2);
 
-		List<Rol> listaRol = onrol.listaRol();
-		for (Rol rol : listaRol) {
-			System.out.println(rol.getNombre());
-		}
+//		List<Rol> listaRol = onrol.listaRol();
+//		for (Rol rol : listaRol) {
+//			System.out.println(rol.getNombre());
+//		}
 //		
 //	//	Rol r=onrol.buscar(2);
 //		//System.out.println("miki"+r.getNombre());
@@ -172,12 +172,12 @@ public class RegistroPersona extends HttpServlet {
 //		}
 //		
 //		
-		try {
-			Persona pb = on.BuscarCorreo("xavi-javi11@hotmail.com");
-			System.out.println("PErsona Buscada" + pb.getNombre());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+//		try {
+//			Persona pb = on.BuscarCorreo("xavi-javi11@hotmail.com");
+//			System.out.println("PErsona Buscada" + pb.getNombre());
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 
 		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 		// Timestamp sqlTimeString = Timestamp.valueOf(calculateThresholdDate(sdf,

@@ -3,8 +3,10 @@ package ec.edu.ups.appDis.view;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import ec.edu.ups.appDis.business.RolON;
@@ -73,6 +75,16 @@ public class RegistroUsuarioBean {
 		this.rols = rols;
 	}
 
+	private String message;
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	@PostConstruct
 	public void init() {
 		rols = ron.listaRol();
@@ -85,13 +97,11 @@ public class RegistroUsuarioBean {
 
 	public String guardarDatos() {
 		try {
-			// ron.crearRol(rol);
 			rol = new Rol();
-			// rol.setIdrol(uadmi.getIdusuario());
-			// rol.setIdrol(id);
+
 			uadmi.setRol(ron.buscar(id));
 			onadmi.crearUsuarioAdmi(uadmi);
-
+			saveMessage();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -101,24 +111,22 @@ public class RegistroUsuarioBean {
 	public void recuperarUAdmi() {
 		try {
 			listaUAdmi = onadmi.listarUAdmi();
-////			List<Persona> listaper2=on.recuperarPersona();
-////			
-////			for (Persona persona : listaper2) {
-////				System.out.println("Cedula"+ persona.getCedula());
-////				System.out.println("Nombre"+ persona.getNombre());
-////				System.out.println("Apellido"+ persona.getApellido());
-////				System.out.println("-----"+ persona.getTelefono());	
-////			}
-//			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("Error al Listar" + e.getMessage());
 		}
 
 	}
-	
+
 	public void eliminar() {
-		
+
+	}
+
+	public void saveMessage() {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		context.addMessage(null, new FacesMessage("Usuario Creado Exitoso "));
 	}
 
 }

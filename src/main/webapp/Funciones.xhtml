@@ -2,10 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,37 +39,9 @@
 		href="TemplateLogin/css/util.css" />
 	<link rel="stylesheet" type="text/css"
 		href="TemplateLogin/css/main.css" />
-
+<h:head>
 </h:head> 
-<h:body> 
-
-<h:form>
-
-<p:dataTable class="table table-hover table-dark" value="#{loginBean.listalogin}" var="login">
-
-<p:column headerText="Descripcion"> 
-<h:outputText value="#{login.descripcion}" />
-</p:column>
-
-<p:column headerText="Fecha"> 
-<h:outputText value="#{login.fecha}" />
-</p:column>
-
-<p:column headerText="Usuario"> 
-<h:outputText value="#{login.persona.nombre}" />
-</p:column>
-
-<p:column headerText="Usuario"> 
-<h:outputText value="#{login.persona.correo}" />
-</p:column>
-
-
-
-</p:dataTable>
-
-
-</h:form>
-
+<body> 
 <!--===============================================================================================-->
 	<script src="TemplateLogin/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
@@ -89,5 +59,5 @@
 	<!--===============================================================================================-->
 	<script src="TemplateLogin/js/main.js"></script>
 
-</h:body> 
+</body> 
 </html>

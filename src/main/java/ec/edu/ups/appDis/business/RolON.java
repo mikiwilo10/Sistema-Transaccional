@@ -23,6 +23,7 @@ public class RolON {
 		return dao.listaRol();
 
 	}
+	
 	public Rol buscar(int id) {
 		return dao.buscar(id);
 	}
