@@ -64,10 +64,10 @@ public class LoginBean {
 		listaLogins();
 	}
 
-	public String Login() throws Exception {
+	public String Login() {
 
-		// try {
-		// EmailClient emial;
+		 try {
+		 EmailClient emial;
 		if (on.buscarPersona(p.getCorreo(), p.getClave()) == true) {
 			String Asunto = " Inicio de Sesion Exitoso";
 			String CuerpoMail = "Hola mundo ";
@@ -95,9 +95,12 @@ public class LoginBean {
 			login.setFecha("10/10/2020");
 			login.setPersona(on.BuscarCorreo(p.getCorreo()));
 			onlogin.crearHlogin(login);
-			// } catch (Exception e) {
+			
 			return "index";
+		} } catch (Exception e) {
+			
 		}
+		return null;
 
 	}
 

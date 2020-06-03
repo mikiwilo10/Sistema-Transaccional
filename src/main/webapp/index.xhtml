@@ -5,36 +5,134 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+
 <h:head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png"
+		href="TemplateLogin/images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/vendor/bootstrap/css/bootstrap.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/vendor/animate/animate.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/vendor/css-hamburgers/hamburgers.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/vendor/animsition/css/animsition.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/vendor/select2/select2.min.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/vendor/daterangepicker/daterangepicker.css" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/css/util.css" />
+	<link rel="stylesheet" type="text/css"
+		href="TemplateLogin/css/main.css" />
+
 
 </h:head>
 
 <h:body>
 
+	<!--
 	<h:form>
 
 		<h3 style="margin-top: 0">Login</h3>
-		<h:panelGrid columns="2">
+		
 
-			
 
+<div class="form-group">
 			<p:outputLabel for="correo">Correo</p:outputLabel>
-			<p:inputText id="correo" 
-				value="#{loginBean.p.correo}"/>
-
+			<p:inputText type="email"  id="correo" value="#{loginBean.p.correo}" />
+		   
+  </div>	
+  <div class="form-group">	
 			<p:outputLabel for="clave">Clave</p:outputLabel>
-			<p:inputText id="clave" value="#{loginBean.p.clave}"/>
+			<p:inputText type="password"  id="clave" value="#{loginBean.p.clave}" />
+  </div>
+  <div class="form-group">
+			<p:commandButton value="Iniciar Sesion" action="#{loginBean.Login()}"></p:commandButton>
 
-			<p:commandButton value="Iniciar Sesion"
-				action="#{loginBean.Login()}"></p:commandButton>
-
-
-		</h:panelGrid>
-
+  </div>
+		
 
 
 
 	</h:form>
+  -->
+
+
+	<div class="limiter">
+		<div class="container-login100"
+			style="background-image: url('TemplateLogin/images/bg-01.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41"> Inicio de Sesion</span>
+
+				<h:form class="login100-form validate-form p-b-33 p-t-5">
+
+
+					<div class="wrap-input100 validate-input"
+						data-validate="Enter username">
+						<p:inputText class="input100" type="email" id="correo"
+							value="#{loginBean.p.correo}" />
+							<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						
+						<p:inputText class="input100" type="password" id="clave"
+							value="#{loginBean.p.clave}" />
+							<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+						
+					</div>
+
+				<div class="container-login100-form-btn m-t-32">
+						<p:commandButton class="login100-form-btn" value="Iniciar Sesion"
+							action="#{loginBean.Login()}"></p:commandButton>
+						
+
+					</div>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!--===============================================================================================-->
+	<script src="TemplateLogin/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="TemplateLogin/vendor/animsition/js/animsition.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="TemplateLogin/vendor/bootstrap/js/popper.js"></script>
+	<script src="TemplateLogin/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="TemplateLogin/vendor/select2/select2.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="TemplateLogin/vendor/daterangepicker/moment.min.js"></script>
+	<script src="TemplateLogin/vendor/daterangepicker/daterangepicker.js"></script>
+	<!--===============================================================================================-->
+	<script src="TemplateLogin/vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script src="TemplateLogin/js/main.js"></script>
+
 </h:body>
 
 
