@@ -11,7 +11,7 @@ import javax.inject.Inject;
 
 import ec.edu.ups.appDis.business.RolON;
 import ec.edu.ups.appDis.business.UsuarioAdminON;
-import ec.edu.ups.appDis.model.Persona;
+//import ec.edu.ups.appDis.model.Persona;
 import ec.edu.ups.appDis.model.Rol;
 import ec.edu.ups.appDis.model.UsuarioAdministrativo;
 

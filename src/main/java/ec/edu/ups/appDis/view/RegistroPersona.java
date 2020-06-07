@@ -22,7 +22,7 @@ import ec.edu.ups.appDis.dao.PersonaDao;
 import ec.edu.ups.appDis.dao.RolDao;
 import ec.edu.ups.appDis.dao.UsuarioAdmiDao;
 import ec.edu.ups.appDis.model.LoginHistoricos;
-import ec.edu.ups.appDis.model.Persona;
+//import ec.edu.ups.appDis.model.Persona;
 import ec.edu.ups.appDis.model.Rol;
 import ec.edu.ups.appDis.model.UsuarioAdministrativo;
 
@@ -45,23 +45,23 @@ public class RegistroPersona extends HttpServlet {
 			throws ServletException, IOException {
 		response.getWriter().println("<h1>Hola mundo</h1>");
 
-		Persona p = new Persona();
-		p.setNombre("wilmer");
-		p.setCorreo("xavi-javi11@hotmail.com");
-		p.setClave("cuenca");
-		on.crearPersona(p);
-
-		Persona p1 = new Persona();
-		p1.setNombre("xavier");
-		p1.setCorreo("mikiwilo10@gmail.com");
-		p1.setClave("cuenca");
-		on.crearPersona(p1);
-
-		Persona p2 = new Persona();
-		p2.setNombre("ligia");
-		p2.setCorreo("xavimiki11@gmail.com");
-		p2.setClave("cuenca");
-		on.crearPersona(p2);
+//		Persona p = new Persona();
+//		p.setNombre("wilmer");
+//		p.setCorreo("xavi-javi11@hotmail.com");
+//		p.setClave("cuenca");
+//		on.crearPersona(p);
+//
+//		Persona p1 = new Persona();
+//		p1.setNombre("xavier");
+//		p1.setCorreo("mikiwilo10@gmail.com");
+//		p1.setClave("cuenca");
+//		on.crearPersona(p1);
+//
+//		Persona p2 = new Persona();
+//		p2.setNombre("ligia");
+//		p2.setCorreo("xavimiki11@gmail.com");
+//		p2.setClave("cuenca");
+//		on.crearPersona(p2);
 
 		/*
 		 * 

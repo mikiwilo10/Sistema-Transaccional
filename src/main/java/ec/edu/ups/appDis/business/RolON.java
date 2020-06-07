@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ec.edu.ups.appDis.dao.RolDao;
-import ec.edu.ups.appDis.model.Persona;
 import ec.edu.ups.appDis.model.Rol;
 
 @Stateless

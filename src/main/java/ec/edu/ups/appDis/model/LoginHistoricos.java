@@ -18,21 +18,38 @@ public class LoginHistoricos {
 	private String descripcion;
 	private String fecha;
 
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "id_persona")
+//	private Persona persona;
+//
+//	
+//	public Persona getPersona() {
+//		return persona;
+//	}
+//
+//	public void setPersona(Persona persona) {
+//		this.persona = persona;
+//	}
+	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_persona")
-	private Persona persona;
+	@JoinColumn(name = "id_socio")
+	private SocioEN socio;
 
 	
-	public Persona getPersona() {
-		return persona;
+	
+	public SocioEN getSocio() {
+		return socio;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+
+
+	public void setSocio(SocioEN socio) {
+		this.socio = socio;
 	}
 
-	
-	
+
+
 	public int getId_login() {
 		return id_login;
 	}

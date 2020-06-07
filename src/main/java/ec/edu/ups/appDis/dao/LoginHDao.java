@@ -11,7 +11,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ec.edu.ups.appDis.model.LoginHistoricos;
-import ec.edu.ups.appDis.model.Persona;
 
 @Stateless
 public class LoginHDao {
@@ -24,9 +23,9 @@ public class LoginHDao {
 
 	}
 
-	public List<LoginHistoricos> getAcceso(int id) {
+	public List<LoginHistoricos> getAcceso(String id) {
 		String jpql = "SELECT p FROM LoginHistoricos p "
-				+ " WHERE id_persona = :id";
+				+ " WHERE id_socio= :id";
 		Query q = em.createQuery(jpql, LoginHistoricos.class);
 		q.setParameter("id", id);
 		return q.getResultList();

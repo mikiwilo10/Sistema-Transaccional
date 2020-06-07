@@ -18,7 +18,7 @@ public class LoginHON {
 		dao.crearAcceso(lh);
 	}
 	
-	public List<LoginHistoricos> getHistoricos(int id){
-		return dao.getAcceso(id);
+	public List<LoginHistoricos> getHistoricos(String cedula){
+		return dao.getAcceso(cedula);
 	}
 }

@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import ec.edu.ups.appDis.model.Persona;
 import ec.edu.ups.appDis.model.UsuarioAdministrativo;
 
 @Stateless

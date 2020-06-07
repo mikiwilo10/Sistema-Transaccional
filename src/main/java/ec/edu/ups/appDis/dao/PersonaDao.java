@@ -9,14 +9,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import ec.edu.ups.appDis.model.Persona;
 
 @Stateless
 public class PersonaDao {
 
 	@PersistenceContext
 	private EntityManager em;
-
+/*
 	public void crearPErsona(Persona p) {
 		em.persist(p);
 	}
@@ -101,14 +100,16 @@ return p;
 		return c;
 	}
 	
-	public int buscarCodigoPersona(String correo) {
-		String jpql="SELECT p FROM Persona p "
-				+ "WHERE p.correo LIKE :correo";
-		 TypedQuery<Persona> query = em.createQuery(jpql, Persona.class);
-		    query.setParameter("correo", correo);
-		  
-		    Persona c= query.getSingleResult();
-		return c.getIdpersona();
-	}
+	
+*/	
+//	public int buscarCodigoPersona(String correo) {
+//		String jpql="SELECT p FROM Persona p "
+//				+ "WHERE p.correo LIKE :correo";
+//		 TypedQuery<Persona> query = em.createQuery(jpql, Persona.class);
+//		    query.setParameter("correo", correo);
+//		  
+//		    Persona c= query.getSingleResult();
+//		return c.getIdpersona();
+//	}
 
 }
