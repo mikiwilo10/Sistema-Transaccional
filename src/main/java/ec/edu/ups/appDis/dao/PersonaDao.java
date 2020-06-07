@@ -26,28 +26,57 @@ public class PersonaDao {
 		return em.find(Persona.class, "id");
 	}
 
-	public boolean login(String correo, String clave) {
+//	public boolean login(String correo, String clave) {
+//		String jpql = "SELECT p FROM Persona p " + "WHERE p.correo LIKE :correo AND p.clave LIKE :clave";
+//
+//		TypedQuery<Persona> query = em.createQuery(jpql, Persona.class);
+//		query.setParameter("correo", correo);
+//		query.setParameter("clave", clave);
+//		try {
+//			Persona c = query.getSingleResult();
+//			System.out.println("Encontrado");
+////        Query q =em.createQuery(jpql);
+////		q.setParameter("correo", correo);
+////		q.setParameter("clave", clave); 
+////      
+////        	try {
+////        		Persona p = (Persona) q.getSingleResult();
+//			return true;
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			return false;
+//		}
+//
+////        	
+//
+//	}
+	
+	public Persona login(String correo, String clave) {
+		Persona p =null;
 		String jpql = "SELECT p FROM Persona p " + "WHERE p.correo LIKE :correo AND p.clave LIKE :clave";
 
 		TypedQuery<Persona> query = em.createQuery(jpql, Persona.class);
 		query.setParameter("correo", correo);
 		query.setParameter("clave", clave);
-		try {
-			Persona c = query.getSingleResult();
+		//try {
+			//Persona c = query.getSingleResult();
 			System.out.println("Encontrado");
+			//em.close();
+			//return c;
 //        Query q =em.createQuery(jpql);
 //		q.setParameter("correo", correo);
 //		q.setParameter("clave", clave); 
 //      
-//        	try {
-//        		Persona p = (Persona) q.getSingleResult();
-			return true;
+        	try {
+        		p = query.getSingleResult();
+			//return p;
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			return false;
+			return null;
 		}
-
+return p;
 //        	
 
 	}

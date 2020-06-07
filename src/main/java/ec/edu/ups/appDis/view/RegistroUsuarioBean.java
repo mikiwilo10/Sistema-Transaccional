@@ -101,7 +101,7 @@ public class RegistroUsuarioBean {
 
 			uadmi.setRol(ron.buscar(id));
 			onadmi.crearUsuarioAdmi(uadmi);
-			saveMessage();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -123,10 +123,6 @@ public class RegistroUsuarioBean {
 
 	}
 
-	public void saveMessage() {
-		FacesContext context = FacesContext.getCurrentInstance();
-
-		context.addMessage(null, new FacesMessage("Usuario Creado Exitoso "));
-	}
+	
 
 }

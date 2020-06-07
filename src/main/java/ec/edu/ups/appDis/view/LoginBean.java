@@ -1,12 +1,18 @@
 package ec.edu.ups.appDis.view;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import ec.edu.ups.appDis.business.LoginHON;
@@ -19,8 +25,8 @@ import ec.edu.ups.appDis.model.Persona;
 import ec.edu.ups.appDis.model.Rol;
 
 @ManagedBean
-@ViewScoped
-public class LoginBean {
+@SessionScoped
+public class LoginBean implements Serializable {
 
 	@Inject
 	private PersonaON on;
@@ -37,9 +43,7 @@ public class LoginBean {
 	private List<LoginHistoricos> listalogin;
 
 	private static int idper;
-
-	
-	
+	private Persona pp = null;
 
 	public Persona getP() {
 		return p;
@@ -61,56 +65,113 @@ public class LoginBean {
 	public void init() {
 		p = new Persona();
 		login = new LoginHistoricos();
-		listaLogins();
+		// listaLogins();
+
 	}
 
-	public String Login() {
+	public String Login() throws Exception {
+		FacesMessage message;
+		SimpleDateFormat date = new SimpleDateFormat();
+		String fecha = date.format(new Date());
+		try {
+//			if(p.getCorreo() !=null && p.getClave()!=null) {
+//				
+//			}else {
+//				
+//			}
+			pp = on.buscarPersona(p.getCorreo(), p.getClave());
+			if (pp != null) {
+				// FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Inicio
+				// de Sesion Exitoso"));
+				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", pp);
+				String Asunto = " Inicio de Sesion Exitoso";
+				String CuerpoMail = "Hola " + pp.getNombre() + " Su inicio de sesion fu exitoso" + " " + fecha;
 
-		 try {
-		 EmailClient emial;
-		if (on.buscarPersona(p.getCorreo(), p.getClave()) == true) {
-			String Asunto = " Inicio de Sesion Exitoso";
-			String CuerpoMail = "Hola mundo ";
+				EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
 
-			EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
+				login.setDescripcion(Asunto);
+				login.setFecha(fecha);
+				login.setPersona(on.BuscarCorreo(p.getCorreo()));
+				onlogin.crearHlogin(login);
+				idper = on.BuscarCorreo(p.getCorreo()).getIdpersona();
 
-			login.setDescripcion(Asunto);
-			login.setFecha("10/10/2020");
-			login.setPersona(on.BuscarCorreo(p.getCorreo()));
-			onlogin.crearHlogin(login);
+				System.out.println("emelec campeonrrr" + idper);
+				// message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido","Inicio
+				// de Sesion Exitoso");
 
-			idper=on.BuscarCorreo(p.getCorreo()).getIdpersona();
+				return "ListarAccesosSesion?faces-redirect=true";
 
-			System.out.println("emelec campeonrrr" + idper);
+			} else {
 
-			return "ListarAccesosSesion.xhtml";
+				String Asuntofail = " Inicio de Sesion Fallido";
+				String CuerpoMailfail = "Hola " + pp.getNombre() + " Se a intentado inicia sesion en las " + fecha
+						+ "Observamos que tienes problemas para iniciar sesion en tu cuenta";
+				EmailClient.sendMail(p.getCorreo(), Asuntofail, CuerpoMailfail);
+				if (on.BuscarCorreo(p.getCorreo()) != null) {
+					login.setDescripcion(Asuntofail);
+					login.setFecha("10/10/2020");
+					login.setPersona(on.BuscarCorreo(p.getCorreo()));
+					onlogin.crearHlogin(login);
+				} else {
+					FacesContext.getCurrentInstance().addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Correo Invalido"));
+				}
 
-		} else {
+//			if (on.BuscarCorreo(p.getCorreo()) !=null) {
+//				login.setDescripcion(Asuntofail);
+//				login.setFecha("10/10/2020");
+//				login.setPersona(on.BuscarCorreo(p.getCorreo()));
+//				onlogin.crearHlogin(login);
+//			} else {
 
-			String Asuntofail = " Inicio de Sesion Fallido";
-			String CuerpoMailfail = "Se intento iniciar sesion  ";
-			EmailClient.sendMail(p.getCorreo(), Asuntofail, CuerpoMailfail);
+				// }
+				// return "index";
+			}
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Usuario o Clave Incorrectas"));
 
-			login.setDescripcion(Asuntofail);
-			login.setFecha("10/10/2020");
-			login.setPersona(on.BuscarCorreo(p.getCorreo()));
-			onlogin.crearHlogin(login);
-			
-			return "index";
-		} } catch (Exception e) {
-			
+		} catch (Exception e) {
+//			FacesContext.getCurrentInstance().addMessage(null,
+//					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+
 		}
 		return null;
 
 	}
 
-	public void listaLogins() {
+	public void listaLogins() throws Exception {
 		try {
 			System.out.println("emelec campeon" + idper);
-			//int id = on.BuscarCodigoPersona(on.BuscarCorreo(p.getCorreo()));
+			// int id = on.BuscarCodigoPersona(on.BuscarCorreo(p.getCorreo()));
 			listalogin = onlogin.getHistoricos(idper);
 		} catch (Exception e) {
 			System.out.println("Error al Listar" + e.getMessage());
+		}
+
+	}
+
+//	public void saveMessage() {
+//		FacesContext context = FacesContext.getCurrentInstance();
+//
+//		context.addMessage(null, new FacesMessage("Inicio de Sesion\",\"Usuario Correcto"));
+//	}
+
+	public void cerrarSession() throws Exception {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+	}
+
+	public void verificarSession() throws Exception {
+		Persona p1 = (Persona) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+		try {
+			if (p1 == null) {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
+			} else {
+				listaLogins();
+				System.out.println("miki mouse emelc" + pp.getNombre());
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 
 	}

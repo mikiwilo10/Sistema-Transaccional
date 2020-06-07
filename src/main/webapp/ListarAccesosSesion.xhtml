@@ -7,47 +7,16 @@
 
 <h:head>
 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!--===============================================================================================-->
-	<link rel="icon" type="image/png"
-		href="TemplateLogin/images/icons/favicon.ico" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/vendor/bootstrap/css/bootstrap.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/vendor/animate/animate.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/vendor/css-hamburgers/hamburgers.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/vendor/animsition/css/animsition.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/vendor/select2/select2.min.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/vendor/daterangepicker/daterangepicker.css" />
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/css/util.css" />
-	<link rel="stylesheet" type="text/css"
-		href="TemplateLogin/css/main.css" />
+
+<!--<f:event listener="#{loginBean.verificarSession()}" type="preRenderView"/>
+ -->
 
 </h:head> 
 <h:body> 
 
 <h:form>
 
-<p:dataTable class="table table-hover table-dark" value="#{loginBean.listalogin}" var="login">
+<p:dataTable value="#{loginBean.listalogin}" var="login">
 
 <p:column headerText="Descripcion"> 
 <h:outputText value="#{login.descripcion}" />
@@ -68,26 +37,13 @@
 
 
 </p:dataTable>
+<p:commandButton value="Cerrar Sesion" title="Cerrar Sesion" icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}" action="index.xhtml">
+</p:commandButton>
+
 
 
 </h:form>
 
-<!--===============================================================================================-->
-	<script src="TemplateLogin/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="TemplateLogin/vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="TemplateLogin/vendor/bootstrap/js/popper.js"></script>
-	<script src="TemplateLogin/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="TemplateLogin/vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="TemplateLogin/vendor/daterangepicker/moment.min.js"></script>
-	<script src="TemplateLogin/vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="TemplateLogin/vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="TemplateLogin/js/main.js"></script>
 
 </h:body> 
 </html>

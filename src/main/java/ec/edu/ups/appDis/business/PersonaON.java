@@ -16,9 +16,15 @@ public class PersonaON {
 		pdao.crearPErsona(p);
 	}
 	
-	public boolean buscarPersona(String correo,String clave)throws Exception {
+//	public boolean buscarPersona(String correo,String clave)throws Exception {
+//		return pdao.login(correo, clave);
+//	}
+	
+	public Persona buscarPersona(String correo,String clave)throws Exception {
 		return pdao.login(correo, clave);
+		
 	}
+	
 	
 	public Persona BuscarCorreo(String correo) {
 		return pdao.buscarCorreo(correo);
