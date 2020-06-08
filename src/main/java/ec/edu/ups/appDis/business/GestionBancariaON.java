@@ -210,7 +210,7 @@ public class GestionBancariaON {
 	}
 	
 	
-	public SocioEN BuscarCorreo(String correo) {
+	public SocioEN BuscarCorreo(String correo) throws Exception{
 		return socioDao.buscarCorreo(correo);
 	}
    

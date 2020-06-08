@@ -52,33 +52,39 @@ public class SocioDao {
 	/*
 	 * 
 	 */
-	public SocioEN buscarCorreo(String correo) {
-		String jpql = "SELECT p FROM SocioEN p " + "WHERE p.correo LIKE :correo";
+	public SocioEN buscarCorreo(String correo)throws Exception {
+		SocioEN c=null;
+		try {
+			String jpql = "SELECT p FROM SocioEN p " + "WHERE p.correo LIKE :correo";
 		TypedQuery<SocioEN> query = em.createQuery(jpql, SocioEN.class);
 		query.setParameter("correo", correo);
 
-		SocioEN c = query.getSingleResult();
+		 c= query.getSingleResult();
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return c;
 	}
 
-	public SocioEN login(String correo, String clave) {
+	public SocioEN login(String correo, String clave)throws Exception{
 		SocioEN p = null;
 		String jpql = "SELECT p FROM SocioEN p " + "WHERE p.correo LIKE :correo AND p.clave LIKE :clave";
 
 		TypedQuery<SocioEN> query = em.createQuery(jpql, SocioEN.class);
 		query.setParameter("correo", correo);
 		query.setParameter("clave", clave);
-		System.out.println("Encontrado");
+		
    
 		try {
 			p = query.getSingleResult();
+			System.out.println("Encontrado");
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			return null;
 		}
 		return p;
-     	
 
 	}
 }

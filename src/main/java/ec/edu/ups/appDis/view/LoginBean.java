@@ -7,34 +7,32 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import ec.edu.ups.appDis.business.GestionBancariaON;
 import ec.edu.ups.appDis.business.LoginHON;
-import ec.edu.ups.appDis.business.PersonaON;
-import ec.edu.ups.appDis.business.RolON;
-import ec.edu.ups.appDis.business.UsuarioAdminON;
-import ec.edu.ups.appDis.dao.RolDao;
 import ec.edu.ups.appDis.model.LoginHistoricos;
 //import ec.edu.ups.appDis.model.Persona;
-import ec.edu.ups.appDis.model.Rol;
 import ec.edu.ups.appDis.model.SocioEN;
 
 @ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
 
-//	@Inject
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4537479482646908992L;
+
+	//	@Inject
 //private PersonaON on;
 	@Inject
 	private GestionBancariaON on;
-	
+
 	@Inject
 	private LoginHON onlogin;
 
@@ -58,8 +56,6 @@ public class LoginBean implements Serializable {
 //		this.p = p;
 //	}
 
-	
-	
 	public List<LoginHistoricos> getListalogin() {
 		return listalogin;
 	}
@@ -80,35 +76,28 @@ public class LoginBean implements Serializable {
 	public void init() {
 		p = new SocioEN();
 		login = new LoginHistoricos();
-		try {
+		//try {
 			listaLogins();
-		} catch (Exception e) {
+	//	} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			//e.printStackTrace();
+		//}
 
 	}
 
-	public String Login() throws Exception {
+	public String Login() throws Exception{
 		FacesMessage message;
 		SimpleDateFormat date = new SimpleDateFormat();
 		String fecha = date.format(new Date());
 		try {
-//			if(p.getCorreo() !=null && p.getClave()!=null) {
-//				
-//			}else {
-//				
-//			}
+
 			pp = on.buscarPersona(p.getCorreo(), p.getClave());
 			if (pp != null) {
 				// FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Inicio
 				// de Sesion Exitoso"));
 				FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", pp);
 				String Asunto = " Inicio de Sesion Exitoso";
-				//String CuerpoMail = "Hola " + pp.getNombre() + " Su inicio de sesion fu exitoso" + " " + fecha;
 				String CuerpoMail = "Hola " + pp.getNombresSocio() + " Su inicio de sesion fu exitoso" + " " + fecha;
-
-				
 
 				login.setDescripcion(Asunto);
 				login.setFecha(fecha);
@@ -116,56 +105,45 @@ public class LoginBean implements Serializable {
 				onlogin.crearHlogin(login);
 				idper = on.BuscarCorreo(p.getCorreo()).getCedulaSocio();
 
-				System.out.println("emelec campeonrrr" + idper);
-				// message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido","Inicio
-				// de Sesion Exitoso");
 				EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
-				return "ListarAccesosSesion?faces-redirect=true";
+				return "listarCuentas?faces-redirect=true";
 
 			} else {
-
 				String Asuntofail = " Inicio de Sesion Fallido";
-				String CuerpoMailfail = "Hola " + pp.getNombresSocio()+ " Se a intentado inicia sesion en las " + fecha
-						+ "Observamos que tienes problemas para iniciar sesion en tu cuenta";
-				EmailClient.sendMail(p.getCorreo(), Asuntofail, CuerpoMailfail);
-				if (on.BuscarCorreo(p.getCorreo()) != null) {
+				String CuerpoMailfail = "Querido Usuario su intento de Sesion a sido Fallido en la fecha:" + fecha
+						+ " Observamos que tienes problemas para iniciar sesion en tu cuenta";
+				
+				
+
+			if (on.BuscarCorreo(p.getCorreo()) != null) {
+
 					login.setDescripcion(Asuntofail);
-					login.setFecha("10/10/2020");
+					login.setFecha(fecha);
 					login.setSocio(on.BuscarCorreo(p.getCorreo()));
 					onlogin.crearHlogin(login);
-				} else {
-					FacesContext.getCurrentInstance().addMessage(null,
-							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Correo Invalido"));
-				}
+					EmailClient.sendMail(p.getCorreo(), Asuntofail, CuerpoMailfail);
 
-//			if (on.BuscarCorreo(p.getCorreo()) !=null) {
-//				login.setDescripcion(Asuntofail);
-//				login.setFecha("10/10/2020");
-//				login.setPersona(on.BuscarCorreo(p.getCorreo()));
-//				onlogin.crearHlogin(login);
-//			} else {
+			 } 
 
-				// }
-				// return "index";
 			}
+
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", "Usuario o Clave Incorrectas"));
-
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Usuario o Clave Incorrectas"));
 		} catch (Exception e) {
-//			FacesContext.getCurrentInstance().addMessage(null,
-//					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
-
-		}
+			
+			
+			
+			}
 		return null;
 
 	}
 
-	public void listaLogins() throws Exception {
+	public void listaLogins() {
 		try {
 			System.out.println("Lista del Usuario: " + idper);
-			
+
 			listalogin = onlogin.getHistoricos(idper);
-			
+
 		} catch (Exception e) {
 			System.out.println("Error al Listar" + e.getMessage());
 		}
@@ -189,7 +167,7 @@ public class LoginBean implements Serializable {
 			if (p1 == null) {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
 			} else {
-				listaLogins();
+				// listaLogins();
 				System.out.println("miki mouse emelc" + pp.getNombresSocio());
 			}
 		} catch (Exception e) {
@@ -197,5 +175,5 @@ public class LoginBean implements Serializable {
 		}
 
 	}
-
+	
 }

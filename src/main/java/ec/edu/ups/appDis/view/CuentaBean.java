@@ -173,7 +173,31 @@ public class CuentaBean {
         
         
 
-        
+       /**
+        * Numero de Cuenta
+        */
+       
+       public static long numbGen() {
+       while (true) {
+           long numb = (long)(Math.random() * 100000000 * 1000000); // had to use this as int's are to small for a 13 digit number.
+           if (String.valueOf(numb).length() == 12)
+               return numb;
+       }
+   }
+       
+     String aleatorio=String.valueOf(numbGen());
+       
+       public String numero(){
+       return aleatorio;
+       }
+
+       public String getAleatorio() {
+           return aleatorio;
+       }
+
+       public void setAleatorio(String aleatorio) {
+           this.aleatorio = aleatorio;
+       }
        
     
 }
