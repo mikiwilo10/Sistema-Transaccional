@@ -147,7 +147,7 @@ public class SocioBean {
             
             
         } catch (Exception ex) {
-            throw new Exception("Error al ieliminar Socio[SocioBean]"+ex);
+            throw new Exception("Error al eliminar Socio[SocioBean]"+ex);
             
         }
         return null;

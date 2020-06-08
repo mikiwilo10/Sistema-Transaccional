@@ -80,7 +80,12 @@ public class LoginBean implements Serializable {
 	public void init() {
 		p = new SocioEN();
 		login = new LoginHistoricos();
-		// listaLogins();
+		try {
+			listaLogins();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -157,9 +162,10 @@ public class LoginBean implements Serializable {
 
 	public void listaLogins() throws Exception {
 		try {
-			System.out.println("emelec campeon" + idper);
-			// int id = on.BuscarCodigoPersona(on.BuscarCorreo(p.getCorreo()));
+			System.out.println("Lista del Usuario: " + idper);
+			
 			listalogin = onlogin.getHistoricos(idper);
+			
 		} catch (Exception e) {
 			System.out.println("Error al Listar" + e.getMessage());
 		}

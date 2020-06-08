@@ -13,48 +13,64 @@
 
 </h:head>
 <h:body>
+<!-- 
+		<p:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+			icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
+			action="index.xhtml">
+		</p:commandButton>
+ -->
 
 
+
+
+	<ui:composition template="template/template.xhtml">
+		<ui:define name="content">
 			<h1>Lista Inicio de Sesion</h1>
+
 
 			<h:form>
 
 				<h:dataTable value="#{loginBean.listalogin}" var="login"
 					class="table">
-	
-				  <h:column>
-						<f:facet name="header">Id Cuenta</f:facet>
-                      <h:outputText value="#{login.descripcion}" />
+
+
+					<h:column>
+						<f:facet name="header">Estado</f:facet>
+                        #{login.descripcion}
                 </h:column>
-					<h:column headerText="Descripcion">
-						<h:outputText value="#{login.descripcion}" />
-					</h:column>
 
-					<h:column headerText="Fecha">
-						<h:outputText value="#{login.fecha}" />
-					</h:column>
+					<br />
+					<br />
 
-					<h:column headerText="Usuario">
-						<h:outputText value="#{login.socio.nombresSocio}" />
-					</h:column>
+					<h:column>
+						<f:facet name="header">Fecha</f:facet>
+                        #{login.fecha}
+                </h:column>
 
-					<p:column headerText="Usuario">
-						<h:outputText value="#{login.socio.correo}" />
-					</p:column>
+					<br />
+					<br />
 
+					<h:column>
+						<f:facet name="header">Usuario</f:facet>
+                        #{login.socio.nombresSocio}
+                </h:column>
+
+				
 
 
 				</h:dataTable>
-
-				<p:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+				<br />
+				<br />
+			
+				
+				<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
 					icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
-					action="index.xhtml">
-				</p:commandButton>
-
-
+					action="index.xhtml" class="btn btn-custom">
+				</h:commandButton>
 
 			</h:form>
-	
+		</ui:define>
+	</ui:composition>
 
 </h:body>
 </html>
