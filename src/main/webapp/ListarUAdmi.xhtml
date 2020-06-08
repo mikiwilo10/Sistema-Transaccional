@@ -1,106 +1,117 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 
 <h:head>
-</h:head> 
-<h:body> 
-
-   
-     <ui:composition template="template/template.xhtml">
-         <ui:define name="content">
-            <h1>Administradores</h1>
+</h:head>
+<h:body>
 
 
-            <h:form>
-              
-					<h:dataTable value="#{registroUsuarioBean.listaUAdmi}" var="admi"  class="table">
-                 
+	<ui:composition template="template/template.xhtml">
+		<ui:define name="content">
+			<h1>Administradores</h1>
 
-                <h:column> 
-                    <f:facet name="header">Nombre</f:facet>
+
+			<h:form>
+
+				<h:dataTable value="#{registroUsuarioBean.listaUAdmi}" var="admi"
+					class="table">
+
+
+					<h:column>
+						<f:facet name="header">Nombre</f:facet>
                         #{admi.nombre}
                 </h:column>
 
-                <br/>
-                <br/>
+					<br />
+					<br />
 
-                <h:column> 
-                    <f:facet name="header">Apellido</f:facet>
+					<h:column>
+						<f:facet name="header">Apellido</f:facet>
                         #{admi.apellido}
                 </h:column>
 
-                <br/>
-                <br/>
+					<br />
+					<br />
 
-                <h:column> 
-                    <f:facet name="header">Usuario</f:facet>
+					<h:column>
+						<f:facet name="header">Usuario</f:facet>
                         #{admi.usuario}
                 </h:column>
 
-                <br/>
-                <br/>
-                
-                
-                <br/>
-                <br/>
+					<br />
+					<br />
 
-                <h:column> 
-                    <f:facet name="header">Clave</f:facet>
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Clave</f:facet>
                         #{admi.contrasena}
                 </h:column>
 
-                <br/>
-                <br/>
+					<br />
+					<br />
 
-                
-                
-                
-                <br/>
-                <br/>
 
-                <h:column> 
-                    <f:facet name="header">Rol</f:facet>
+
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Rol</f:facet>
                         #{admi.rol.nombre}
                 </h:column>
 
-                <br/>
-                <br/>
-                
-                
-                <br/>
-                <br/>
+					<br />
+					<br />
 
-               
-                <br/>
-                <br/>
-      
-                 <h:column> 
-                    <f:facet name="header">Acciones</f:facet>
-              <h:commandButton action="#{socioBean.eliminarScocio(socio.cedulaSocio)}" value="Eliminar" onclick="alert('Socio Eliminado...');" class="btn btn-youtube"/>   
-          
- 
-              
-                
-                 </h:column>
-                
-                
-                
-            </h:dataTable>
-                 <br/>
-                <br/>
-                <h:commandButton  action="#{socioBean.redirigeCrearSocio()}" value="Regresar Crear Socio" class="btn btn-github"/>  
-                    <br/>
-                    <br/>
-                 <h:commandButton  action="#{socioBean.verCuentas()}" value="Ver Cuentas" class="btn btn-custom"/>  
-                   
-          
-            </h:form>
-               </ui:define>   
-          </ui:composition>   
-</h:body> 
+
+					<br />
+					<br />
+
+
+					<br />
+					<br />
+
+					<h:column>
+						<f:facet name="header">Acciones</f:facet>
+						<h:commandButton
+							action="#{socioBean.eliminarScocio(socio.cedulaSocio)}"
+							value="Eliminar" onclick="alert('Socio Eliminado...');"
+							class="btn btn-youtube" />
+
+
+
+
+					</h:column>
+
+
+
+				</h:dataTable>
+				<br />
+				<br />
+				<h:commandButton action="#{socioBean.redirigeCrearSocio()}"
+					value="Regresar Crear Socio" class="btn btn-github" />
+				<br />
+				<br />
+				<h:commandButton action="#{socioBean.verCuentas()}"
+					value="Ver Cuentas" class="btn btn-custom" />
+				<br />
+				<br />
+				<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+					icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
+					action="index.xhtml" class="btn btn-youtube">
+				</h:commandButton>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

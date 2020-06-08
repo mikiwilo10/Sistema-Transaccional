@@ -168,7 +168,7 @@ public class LoginBean implements Serializable {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
 			} else {
 				// listaLogins();
-				System.out.println("miki mouse emelc" + pp.getNombresSocio());
+				
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

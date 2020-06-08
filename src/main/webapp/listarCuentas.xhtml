@@ -5,94 +5,104 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
-
-    
-    
-     <ui:composition template="template/template.xhtml">
-         <ui:define name="content">
-            
- 
-            <h1>Ver Cuentas de Socios</h1>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
 
-            <h:form>
-                <h:dataTable value="#{cuentaBean.listaCuenta}" var="cuenta"  class="table">
 
-              <h:column> 
-                    <f:facet name="header">Id Cuenta</f:facet>
+<ui:composition template="template/template.xhtml">
+	<ui:define name="content">
+
+
+		<h1>Ver Cuentas de Socios</h1>
+
+
+		<h:form>
+			<h:dataTable value="#{cuentaBean.listaCuenta}" var="cuenta"
+				class="table">
+
+				<h:column>
+					<f:facet name="header">Id Cuenta</f:facet>
                         #{cuenta.idCuenta}
                 </h:column>
 
 
-                <h:column> 
-                    <f:facet name="header">Tipo Cuenta</f:facet>
+				<h:column>
+					<f:facet name="header">Tipo Cuenta</f:facet>
                         #{cuenta.tipoCuenta}
                 </h:column>
 
-                <br/>
-                <br/>
+				<br />
+				<br />
 
-                <h:column> 
-                    <f:facet name="header">Fecha Registro</f:facet>
+				<h:column>
+					<f:facet name="header">Fecha Registro</f:facet>
                         #{cuenta.fechaRegistroCuenta}
                 </h:column>
 
-                <br/>
-                <br/>
-                
-               
+				<br />
+				<br />
 
-                <h:column> 
-                    <f:facet name="header">Saldo</f:facet>
+
+
+				<h:column>
+					<f:facet name="header">Saldo</f:facet>
                         #{cuenta.saldo}
                 </h:column>
-                
-                 <br/>
-                <br/>
 
-                 <h:column> 
-                    <f:facet name="header">Cedula</f:facet>
+				<br />
+				<br />
+
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>
                         #{cuenta.socio.cedulaSocio}
                 </h:column>
-                
-                <h:column> 
-                    <f:facet name="header">Nombre</f:facet>
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
                         #{cuenta.socio.nombresSocio}
                 </h:column>
-                
-                
-                <h:column> 
-                    <f:facet name="header">Apellido</f:facet>
+
+
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
                         #{cuenta.socio.apelidosSocio}
                 </h:column>
 
-                <br/>
-                <br/>
-               
-               
-      
-                <h:column> 
-                    <f:facet name="header"></f:facet>
-                   <!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
-                    
-                    <h:commandButton   action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}" value="Depositar"  class="btn btn-dropbox"/>
-                  
-                    <h:commandButton   action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}" value="Retirar" class="btn btn-googleplus"/> 
-                   
+				<br />
+				<br />
 
-                </h:column>
-                
-                
-                
-            </h:dataTable>
-          
-            </h:form>
-                
- </ui:define>   
-          </ui:composition>  
+
+
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<!-- <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar"/> -->
+
+					<h:commandButton
+						action="#{cuentaBean.redirigeCrearMovimiento(cuenta.idCuenta)}"
+						value="Depositar" class="btn btn-dropbox" />
+
+					<h:commandButton
+						action="#{cuentaBean.redirigeCrearRetiro(cuenta.idCuenta)}"
+						value="Retirar" class="btn btn-googleplus" />
+
+
+				</h:column>
+
+
+
+			</h:dataTable>
+			<br />
+			<br />
+			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+				icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
+				action="index.xhtml" class="btn btn-youtube">
+			</h:commandButton>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>

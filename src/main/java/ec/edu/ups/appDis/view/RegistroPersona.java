@@ -99,16 +99,16 @@ public class RegistroPersona extends HttpServlet {
 
 		UsuarioAdministrativo admi = new UsuarioAdministrativo();
 
-		admi.setNombre("joselino");
-		admi.setApellido("perez");
-		admi.setUsuario("jperez");
+		admi.setNombre("Juan");
+		admi.setApellido("Fransisco");
+		admi.setUsuario("jfransisco");
 		admi.setContrasena("cuenca");
 
 		UsuarioAdministrativo admi2 = new UsuarioAdministrativo();
 
-		admi2.setNombre("olivia");
-		admi2.setApellido("popeye");
-		admi2.setUsuario("joliva");
+		admi2.setNombre("Selena");
+		admi2.setApellido("Gomez");
+		admi2.setUsuario("sgomez");
 		admi2.setContrasena("cuenca");
 
 		Rol rol1 = new Rol();
@@ -183,8 +183,8 @@ public class RegistroPersona extends HttpServlet {
 		// Timestamp sqlTimeString = Timestamp.valueOf(calculateThresholdDate(sdf,
 		// "yyyy-MM-dd HH:mm:ss"));
 
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		System.out.println(timestamp);
+//		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//		System.out.println(timestamp);
 
 //     List<LoginHistoricos>loginlista=onlh.getHistoricos(p.getIdpersona());
 //     for (LoginHistoricos m : loginlista) {

@@ -7,12 +7,13 @@
 
 <h:head>
 
-<f:event listener="#{loginBean.verificarSession()}" type="preRenderView"/>
+	<f:event listener="#{loginBean.verificarSession()}"
+		type="preRenderView" />
 
 
 </h:head>
 <h:body>
-<!-- 
+	<!-- 
 		<p:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
 			icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
 			action="index.xhtml">
@@ -54,17 +55,19 @@
                         #{login.socio.nombresSocio}
                 </h:column>
 
-				
+
 
 
 				</h:dataTable>
 				<br />
 				<br />
-			
-				
+
+
+				<br />
+				<br />
 				<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
 					icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
-					action="index.xhtml" class="btn btn-custom">
+					action="index.xhtml" class="btn btn-youtube">
 				</h:commandButton>
 
 			</h:form>
