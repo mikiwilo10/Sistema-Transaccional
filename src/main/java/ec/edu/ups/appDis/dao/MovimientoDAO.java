@@ -50,6 +50,12 @@ public class MovimientoDAO {
     }
     
     
+     public List<MovimientoEN> listarMovimiento(String idCuenta){
+         String jpql = "Select p FROM MovimientoEN p WHERE p.cuenta like '" + idCuenta+"'";
+         Query q = em.createQuery(jpql, MovimientoEN.class);
+
+          return q.getResultList();
+     }
     
     
     

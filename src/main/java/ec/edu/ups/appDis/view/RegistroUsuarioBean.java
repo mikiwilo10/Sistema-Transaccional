@@ -126,9 +126,17 @@ public class RegistroUsuarioBean {
 		}
 
 	}
+	public String eliminarUadmi(int id) throws Exception {
 
-	public void eliminar() {
+		try {
+			onadmi.eliminarUAdmi(id);;
+			System.out.println("Administrador Eliminado..." +uadmi.getNombre());
 
+		} catch (Exception ex) {
+			throw new Exception("Error al eliminar" + ex);
+
+		}
+		return null;
 	}
 
 	

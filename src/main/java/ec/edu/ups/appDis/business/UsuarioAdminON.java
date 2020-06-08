@@ -23,5 +23,7 @@ public class UsuarioAdminON {
 		return uddao.listaUAdmi("%");
 	}
 
-	
+	public void eliminarUAdmi(int id) throws Exception {
+        uddao.deleteUAdmi(id);;
+    }
 }

@@ -31,11 +31,11 @@ public class UsuarioAdmiDao {
 		return q.getResultList();
 
 	}
-	public UsuarioAdministrativo buscarUAdmin(String cedulaSocio) throws Exception {
-		return em.find(UsuarioAdministrativo.class, cedulaSocio);
+	public UsuarioAdministrativo buscarUAdmin(int id) throws Exception {
+		return em.find(UsuarioAdministrativo.class, id);
 	}
-	public void deleteUAdmi(String cedula) throws Exception {
-		UsuarioAdministrativo s = buscarUAdmin(cedula);
+	public void deleteUAdmi(int id) throws Exception {
+		UsuarioAdministrativo s = buscarUAdmin(id);
 		em.remove(s);
 	}
 }

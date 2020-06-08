@@ -109,6 +109,20 @@ public class MovimientoBean {
         return "listarCuentas";
     }
       
+     
+     public List<MovimientoEN> listarMovimiento(){
+         return on.listarMovimiento(this.idCuenta);
+     }
+     
+     private String idCuenta;
+
+     public String getIdCuenta(){
+         return idCuenta;
+     }
+  
+     public void setIdCuenta(String idCuenta){
+         this.idCuenta = idCuenta;
+     }
     
     
     

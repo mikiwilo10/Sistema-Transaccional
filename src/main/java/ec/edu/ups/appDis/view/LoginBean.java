@@ -106,7 +106,7 @@ public class LoginBean implements Serializable {
 				idper = on.BuscarCorreo(p.getCorreo()).getCedulaSocio();
 
 				EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
-				return "listarCuentas?faces-redirect=true";
+				return "ultimo-movimiento?faces-redirect=true";
 
 			} else {
 				String Asuntofail = " Inicio de Sesion Fallido";
@@ -167,7 +167,7 @@ public class LoginBean implements Serializable {
 			if (p1 == null) {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
 			} else {
-				// listaLogins();
+				
 				
 			}
 		} catch (Exception e) {

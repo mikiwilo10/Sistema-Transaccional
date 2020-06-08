@@ -214,5 +214,9 @@ public class GestionBancariaON {
 		return socioDao.buscarCorreo(correo);
 	}
    
+	
+	 public List<MovimientoEN> listarMovimiento(String idCuenta){
+	        return movimientoDAO.listarMovimiento(idCuenta);
+	    }
     
 }

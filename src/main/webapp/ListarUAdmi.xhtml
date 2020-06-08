@@ -83,8 +83,8 @@
 					<h:column>
 						<f:facet name="header">Acciones</f:facet>
 						<h:commandButton
-							action="#{socioBean.eliminarScocio(socio.cedulaSocio)}"
-							value="Eliminar" onclick="alert('Socio Eliminado...');"
+							action="#{registroUsuarioBean.eliminarUadmi(admi.idusuario)}"
+							value="Eliminar" onclick="alert('Eliminado...');"
 							class="btn btn-youtube" />
 
 
@@ -95,16 +95,7 @@
 
 
 				</h:dataTable>
-				<br />
-				<br />
-				<h:commandButton action="#{socioBean.redirigeCrearSocio()}"
-					value="Regresar Crear Socio" class="btn btn-github" />
-				<br />
-				<br />
-				<h:commandButton action="#{socioBean.verCuentas()}"
-					value="Ver Cuentas" class="btn btn-custom" />
-				<br />
-				<br />
+				
 				<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
 					icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
 					action="index.xhtml" class="btn btn-youtube">
