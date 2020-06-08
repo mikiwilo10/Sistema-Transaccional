@@ -4,6 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
+<f:event listener="#{loginBean.verificarSession()}" type="preRenderView"/>
+
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />

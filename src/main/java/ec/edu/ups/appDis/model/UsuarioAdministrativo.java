@@ -1,5 +1,7 @@
 package ec.edu.ups.appDis.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class UsuarioAdministrativo {
+public class UsuarioAdministrativo implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )

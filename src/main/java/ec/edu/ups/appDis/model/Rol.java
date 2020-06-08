@@ -1,5 +1,6 @@
 package ec.edu.ups.appDis.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Rol {
+public class Rol implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
