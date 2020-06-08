@@ -90,8 +90,6 @@ public class RegistroUsuarioBean {
 		rols = ron.listaRol();
 
 		uadmi = new UsuarioAdministrativo();
-
-//		//on.buscarPersona(p.getCorreo(), p.getClave());
 		recuperarUAdmi();
 	}
 
@@ -111,6 +109,16 @@ public class RegistroUsuarioBean {
 	public void recuperarUAdmi() {
 		try {
 			listaUAdmi = onadmi.listarUAdmi();
+			
+			List<UsuarioAdministrativo>listaua = onadmi.listarUAdmi();
+			for (UsuarioAdministrativo ua : listaua) {
+				System.out.println("Nombre:"+ua.getNombre() );
+				System.out.println("Apellido:"+ua.getApellido() );
+				System.out.println("Usuario:"+ua.getUsuario());
+				System.out.println("Clave:"+ua.getContrasena() );
+				System.out.println("Rol:"+ua.getRol().getNombre() );
+				
+			}
 
 		} catch (Exception e) {
 			// TODO: handle exception

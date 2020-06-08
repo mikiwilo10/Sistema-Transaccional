@@ -1,49 +1,60 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 
 
-<!--<f:event listener="#{loginBean.verificarSession()}" type="preRenderView"/>
+	<!--<f:event listener="#{loginBean.verificarSession()}" type="preRenderView"/>
  -->
 
-</h:head> 
-<h:body> 
-
-<h:form>
-
-<p:dataTable value="#{loginBean.listalogin}" var="login">
-
-<p:column headerText="Descripcion"> 
-<h:outputText value="#{login.descripcion}" />
-</p:column>
-
-<p:column headerText="Fecha"> 
-<h:outputText value="#{login.fecha}" />
-</p:column>
-
-<p:column headerText="Usuario"> 
-<h:outputText value="#{login.socio.nombresSocio}" />
-</p:column>
-
-<p:column headerText="Usuario"> 
-<h:outputText value="#{login.socio.correo}" />
-</p:column>
+</h:head>
+<h:body>
 
 
+			<h1>Lista Inicio de Sesion</h1>
 
-</p:dataTable>
-<p:commandButton value="Cerrar Sesion" title="Cerrar Sesion" icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}" action="index.xhtml">
-</p:commandButton>
+			<h:form>
+
+				<h:dataTable value="#{loginBean.listalogin}" var="login"
+					class="table">
+	
+				  <h:column>
+						<f:facet name="header">Id Cuenta</f:facet>
+                      <h:outputText value="#{login.descripcion}" />
+                </h:column>
+					<h:column headerText="Descripcion">
+						<h:outputText value="#{login.descripcion}" />
+					</h:column>
+
+					<h:column headerText="Fecha">
+						<h:outputText value="#{login.fecha}" />
+					</h:column>
+
+					<h:column headerText="Usuario">
+						<h:outputText value="#{login.socio.nombresSocio}" />
+					</h:column>
+
+					<p:column headerText="Usuario">
+						<h:outputText value="#{login.socio.correo}" />
+					</p:column>
 
 
 
-</h:form>
+				</h:dataTable>
+
+				<p:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+					icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
+					action="index.xhtml">
+				</p:commandButton>
 
 
-</h:body> 
+
+			</h:form>
+	
+
+</h:body>
 </html>

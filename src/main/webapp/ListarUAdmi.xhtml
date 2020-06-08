@@ -10,42 +10,101 @@
 </h:head> 
 <h:body> 
 
-<h:form>
-
-<p:dataTable value="#{registroUsuarioBean.listaUAdmi}" var="admi">
-
-<p:column headerText="Nombre"> 
-<h:outputText value="#{admi.nombre}" />
-</p:column>
-
-<p:column headerText="Apellido"> 
-<h:outputText value="#{admi.apellido}" />
-</p:column>
-
-<p:column headerText="Usuario"> 
-<h:outputText value="#{admi.usuario}" />
-</p:column>
-
-<p:column headerText="Clave"> 
-<h:outputText value="#{admi.contrasena}" />
-</p:column>
-
-<p:column headerText="Rol"> 
-<h:outputText value="#{admi.rol.nombre}" />
-</p:column>
-
-<p:column headerText="Eiminar"> 
-<p:commandButton value="Eiminar"></p:commandButton>
-</p:column>
+   
+     <ui:composition template="template/template.xhtml">
+         <ui:define name="content">
+            <h1>Administradores</h1>
 
 
+            <h:form>
+              
+					<h:dataTable value="#{registroUsuarioBean.listaUAdmi}" var="admi"  class="table">
+                 
 
+                <h:column> 
+                    <f:facet name="header">Nombre</f:facet>
+                        #{admi.nombre}
+                </h:column>
 
-</p:dataTable>
+                <br/>
+                <br/>
 
-<p:commandButton actionListener="#{loginBean.cerrarSession()}" action="index.xhtml">
-</p:commandButton>
+                <h:column> 
+                    <f:facet name="header">Apellido</f:facet>
+                        #{admi.apellido}
+                </h:column>
 
-</h:form>
+                <br/>
+                <br/>
+
+                <h:column> 
+                    <f:facet name="header">Usuario</f:facet>
+                        #{admi.usuario}
+                </h:column>
+
+                <br/>
+                <br/>
+                
+                
+                <br/>
+                <br/>
+
+                <h:column> 
+                    <f:facet name="header">Clave</f:facet>
+                        #{admi.contrasena}
+                </h:column>
+
+                <br/>
+                <br/>
+
+                
+                
+                
+                <br/>
+                <br/>
+
+                <h:column> 
+                    <f:facet name="header">Rol</f:facet>
+                        #{admi.rol.nombre}
+                </h:column>
+
+                <br/>
+                <br/>
+                
+                
+                <br/>
+                <br/>
+
+               
+                <br/>
+                <br/>
+      
+                 <h:column> 
+                    <f:facet name="header">Acciones</f:facet>
+              <h:commandButton action="#{socioBean.editarSocio(socio.cedulaSocio)}"  value="Editar" class="btn btn-instagram"/> 
+              <h:commandButton action="#{socioBean.eliminarScocio(socio.cedulaSocio)}" value="Eliminar" onclick="alert('Socio Eliminado...');" class="btn btn-youtube"/>   
+              
+              <h:commandButton action="#{socioBean.redirigeCrearCuenta(socio.cedulaSocio)}" value="Crear Cuenta" class="btn btn-success" /> 
+              
+           
+ 
+              
+                
+                 </h:column>
+                
+                
+                
+            </h:dataTable>
+                 <br/>
+                <br/>
+                <h:commandButton  action="#{socioBean.redirigeCrearSocio()}" value="Regresar Crear Socio" class="btn btn-github"/>  
+                    <br/>
+                    <br/>
+                 <h:commandButton  action="#{socioBean.verCuentas()}" value="Ver Cuentas" class="btn btn-custom"/>  
+                   
+          
+            </h:form>
+               </ui:define>   
+          </ui:composition>   
 </h:body> 
 </html>

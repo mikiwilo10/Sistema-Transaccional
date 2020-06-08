@@ -103,18 +103,18 @@ public class LoginBean implements Serializable {
 				//String CuerpoMail = "Hola " + pp.getNombre() + " Su inicio de sesion fu exitoso" + " " + fecha;
 				String CuerpoMail = "Hola " + pp.getNombresSocio() + " Su inicio de sesion fu exitoso" + " " + fecha;
 
-				EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
+				
 
 				login.setDescripcion(Asunto);
 				login.setFecha(fecha);
 				login.setSocio(on.BuscarCorreo(p.getCorreo()));
 				onlogin.crearHlogin(login);
-				idper = on.BuscarCorreo(p.getCorreo()).getCedularSocio();
+				idper = on.BuscarCorreo(p.getCorreo()).getCedulaSocio();
 
 				System.out.println("emelec campeonrrr" + idper);
 				// message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido","Inicio
 				// de Sesion Exitoso");
-
+				EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
 				return "ListarAccesosSesion?faces-redirect=true";
 
 			} else {

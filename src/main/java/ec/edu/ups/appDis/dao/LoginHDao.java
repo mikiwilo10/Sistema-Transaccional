@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ec.edu.ups.appDis.model.LoginHistoricos;
+import ec.edu.ups.appDis.model.SocioEN;
 
 @Stateless
 public class LoginHDao {
@@ -25,12 +26,19 @@ public class LoginHDao {
 
 	public List<LoginHistoricos> getAcceso(String id) {
 		String jpql = "SELECT p FROM LoginHistoricos p "
-				+ " WHERE id_socio= :id";
+				+ " WHERE id_socio LIKE :id";
 		Query q = em.createQuery(jpql, LoginHistoricos.class);
-		q.setParameter("id", id);
+		q.setParameter("id",id + "%");
 		return q.getResultList();
 	}
 	
+//	public List<SocioEN> getSocios(String filtro) throws Exception {
+//		String jpql = "SELECT p FROM SocioEN p WHERE cedulaSocio LIKE :filtro";
+//
+//		Query q = em.createQuery(jpql, SocioEN.class);
+//		q.setParameter("filtro", filtro + "%");
+//		return q.getResultList();
+//	}
 	
 //	public CategoriaEN read3(int id) {
 //		String jpql = "SELECT cat " + "	 FROM CategoriaEN cat " + "		  JOIN FETCH cat.producto p "
