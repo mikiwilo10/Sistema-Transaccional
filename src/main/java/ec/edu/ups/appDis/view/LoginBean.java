@@ -23,12 +23,12 @@ import ec.edu.ups.appDis.model.SocioEN;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-/**
-	 * 
-	 */
+	/**
+		 * 
+		 */
 	private static final long serialVersionUID = 4537479482646908992L;
 
-	//	@Inject
+	// @Inject
 //private PersonaON on;
 	@Inject
 	private GestionBancariaON on;
@@ -76,16 +76,16 @@ public class LoginBean implements Serializable {
 	public void init() {
 		p = new SocioEN();
 		login = new LoginHistoricos();
-		//try {
-			listaLogins();
-	//	} catch (Exception e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		//}
+		// try {
+		listaLogins();
+		// } catch (Exception e) {
+		// TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 	}
 
-	public String Login() throws Exception{
+	public String Login() throws Exception {
 		FacesMessage message;
 		SimpleDateFormat date = new SimpleDateFormat();
 		String fecha = date.format(new Date());
@@ -112,10 +112,8 @@ public class LoginBean implements Serializable {
 				String Asuntofail = " Inicio de Sesion Fallido";
 				String CuerpoMailfail = "Querido Usuario su intento de Sesion a sido Fallido en la fecha:" + fecha
 						+ " Observamos que tienes problemas para iniciar sesion en tu cuenta";
-				
-				
 
-			if (on.BuscarCorreo(p.getCorreo()) != null) {
+				if (on.BuscarCorreo(p.getCorreo()) != null) {
 
 					login.setDescripcion(Asuntofail);
 					login.setFecha(fecha);
@@ -123,17 +121,15 @@ public class LoginBean implements Serializable {
 					onlogin.crearHlogin(login);
 					EmailClient.sendMail(p.getCorreo(), Asuntofail, CuerpoMailfail);
 
-			 } 
+				}
 
 			}
 
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Usuario o Clave Incorrectas"));
 		} catch (Exception e) {
-			
-			
-			
-			}
+
+		}
 		return null;
 
 	}
@@ -162,18 +158,33 @@ public class LoginBean implements Serializable {
 	}
 
 	public void verificarSession() throws Exception {
-		SocioEN p1 = (SocioEN) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-		try {
-			if (p1 == null) {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
-			} else {
-				
-				
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
+//		SocioEN p1 = (SocioEN) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+//		try {
+//			if (p1 == null) {
+//				FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
+//			} else {
+//				
+//				
+//			}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//
+	}
+
+	public void verificarSessionSocio() throws Exception {
+	SocioEN p1 = (SocioEN) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+	try {
+		if (p1 == null) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("permisos.xhtml");
+		} else {
+			
+			
 		}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
 
 	}
-	
+
 }

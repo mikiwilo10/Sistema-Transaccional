@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="stylesheet" type="text/css"
+		href="LoginT/vendor/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="LoginT/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="LoginT/fonts/iconic/css/material-design-iconic-font.min.css" />
+	<link rel="stylesheet" type="text/css" href="LoginT/css/util.css" />
+	<link rel="stylesheet" type="text/css" href="LoginT/css/main.css" />
+</h:head>
+
+<h:body>
+	<div class="limiter">
+		<div class="container-login100"
+			style="background-image: url('LoginT/images/bg-01.jpg');">
+			<div class="wrap-login100">
+
+				<span class="login100-form-title p-b-41"> Inicio de Sesion Administrativos</span>
+
+				<p:growl id="growl" showDetail="true" sticky="true" life="300" />
+				<h:form id="formulario" class="login100-form">
+					<!--
+				 
+					<p:messages showDetail="true" closable="true">
+						<p:autoUpdate/>
+				</p:messages>-->
+
+
+
+					<div class="wrap-input100" title="Usuario">
+						<p:inputText class="input100" type="text" id="correo"
+							value="#{loginAdmiBean.p.usuario}" required="true"
+							placeholder="Usuario" />
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+
+
+					<div class="wrap-input100" title="Clave">
+						<p:inputText class="input100" type="password" id="clave"
+							value="#{loginAdmiBean.p.contrasena}" required="true" placeholder="Clave" />
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<p:commandButton class="login100-form-btn" value="Iniciar Sesion"
+							action="#{loginAdmiBean.Login()}" update="growl"></p:commandButton>
+					</div>
+
+
+
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<script src="LoginT/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="LoginT/vendor/animsition/js/animsition.min.js"></script>
+	<script src="LoginT/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="LoginT/js/main.js"></script>
+
+</h:body>
+
+
+
+
+</html>

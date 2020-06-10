@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import ec.edu.ups.appDis.dao.UsuarioAdmiDao;
 import ec.edu.ups.appDis.model.UsuarioAdministrativo;
-import ec.edu.ups.appDis.model.Rol;
+
 
 @Stateless
 public class UsuarioAdminON {
@@ -26,4 +26,15 @@ public class UsuarioAdminON {
 	public void eliminarUAdmi(int id) throws Exception {
         uddao.deleteUAdmi(id);;
     }
+	
+	
+	public UsuarioAdministrativo buscarUsuarioAdmi(String usuario,String clave)throws Exception {
+		return uddao.login(usuario, clave);
+		
+	}
+	
+	
+	public UsuarioAdministrativo BuscarUsuario(String usuario) throws Exception{
+		return uddao.buscarUsuarioAdmi(usuario);
+	}
 }

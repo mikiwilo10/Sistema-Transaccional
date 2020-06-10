@@ -4,9 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
+  
 
-<f:event listener="#{loginAdmiBean.verificarSessionAdmi()}" type="preRenderView"/>
-
+ <f:event listener="#{loginBean.verificarSessionSocio()}" type="preRenderView"/>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -79,17 +79,17 @@
 				<ul class="nav navbar-top-links navbar-right pull-right">
 					<li><a
 						class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
-						href=""><i class="fa fa-bars"></i></a>
+						href="#"><i class="fa fa-bars"></i></a>
 					</li>
 					<li>
 						<form role="search" class="app-search hidden-sm hidden-xs m-r-10">
 							<input type="text" placeholder="Search..." class="form-control" />
-							<a href="#"><i class="fa fa-search"></i></a>
+							<a href="template/"><i class="fa fa-search"></i></a>
 						</form>
 					</li>
 					<li><a class="profile-pic" href="#"> <img
-							src="template/plugins/images/users/admi.jpg" alt="user-img"
-							width="36" class="img-circle" /><b class="hidden-xs" >Administrativos</b></a></li>
+							src="template/plugins/images/users/user.jpg" alt="user-img"
+							width="36" class="img-circle" /><b class="hidden-xs">Socios</b></a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-header -->
@@ -108,31 +108,21 @@
 						<span class="hide-menu">Navigation</span>
 					</h3>
 				</div>
-				
-				
 				<ul class="nav" id="side-menu">
-				
-				
-				<li style="padding: 70px 0 0;"><a
-						href="#" class="waves-effect"><i
-							aria-hidden="true"><span>Bienvenido</span> </i></a>
-					</li>
 					
 					<li style="padding: 70px 0 0;"><a
-						href="./Socio.xhtml" class="waves-effect"><i
-							class="fa fa-user fa-fw" aria-hidden="true"></i>Crea Socios</a>
+						href="#" class="waves-effect"><i
+							aria-hidden="true">Bienvenido </i></a>
 					</li>
 					
-					<li><a href="./listaSocios.xhtml" class="waves-effect"><i
-							class="fa fa-table fa-fw" aria-hidden="true"></i>Listar Socios</a>
-					</li>
 					
-				<!-- 	<li><a href="./ultimo-movimiento.xhtml" class="waves-effect"><i
+					
+					<li><a href="./ultimo-movimiento.xhtml" class="waves-effect"><i
 							class="fa fa-table fa-fw" aria-hidden="true"></i>Listar Movimientos Bancarios</a>
 					</li>
 					
 					
-					<li><a href="./listarCuentas.xhtml" class="waves-effect"><i
+					<li><a href="./listarCuentaSocio.xhtml" class="waves-effect"><i
 							class="fa fa-table fa-fw" aria-hidden="true"></i>Estado Cuenta</a>
 					</li>					
 					
@@ -140,20 +130,7 @@
 							class="fa fa-table fa-fw" aria-hidden="true"></i>Historial de Inicio de Sesion</a>
 					</li>
 					
-				 -->
-				 
-				 <li><a href="./listarCuentas.xhtml" class="waves-effect"><i
-							class="fa fa-table fa-fw" aria-hidden="true"></i>Estado Cuenta</a>
-					</li>					
-					
-					
-					<li><a href="./crearUAdmi.xhtml" class="waves-effect"><i
-							class="fa fa-user fa-fw" aria-hidden="true"></i>Crear Administrador</a></li>
-					
-					<li><a href="./ListarUAdmi.xhtml" class="waves-effect"><i
-							class="fa fa-table fa-fw" aria-hidden="true"></i>Lista Administradores</a>
-					</li>
-					
+				
 					
 				
 				</ul>
