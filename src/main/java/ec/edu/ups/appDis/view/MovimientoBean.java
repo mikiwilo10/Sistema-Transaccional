@@ -110,8 +110,8 @@ public class MovimientoBean {
     }
       
      
-     public List<MovimientoEN> listarMovimiento(){
-         return on.listarMovimiento(this.idCuenta);
+     public List<MovimientoEN> listarMovimiento(String idCuenta){
+         return on.listarMovimiento(idCuenta);
      }
      
      private String idCuenta;
@@ -124,6 +124,41 @@ public class MovimientoBean {
          this.idCuenta = idCuenta;
      }
     
+     
+     
+     private Date fechadesde;
+     private Date fechahasta;
+     private String tipo_movi;
+
+
+	public Date getFechadesde() {
+		return fechadesde;
+	}
+
+	public void setFechadesde(Date fechadesde) {
+		this.fechadesde = fechadesde;
+	}
+
+	public Date getFechahasta() {
+		return fechahasta;
+	}
+
+	public void setFechahasta(Date fechahasta) {
+		this.fechahasta = fechahasta;
+	}
+
+	public String getTipo_movi() {
+		return tipo_movi;
+	}
+
+	public void setTipo_movi(String tipo_movi) {
+		this.tipo_movi = tipo_movi;
+	}
+     
+     
+	 public List<MovimientoEN> listarMovimientoFecha (String idCuenta, Date desde, Date hasta, String tipo){
+         return on.listarMovimientoFecha(idCuenta,desde,hasta,tipo);
+     }
     
     
 }

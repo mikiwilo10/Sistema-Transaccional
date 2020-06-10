@@ -6,6 +6,8 @@
 package ec.edu.ups.appDis.dao;
 
 import ec.edu.ups.appDis.model.MovimientoEN;
+
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -60,6 +62,18 @@ public class MovimientoDAO {
     
     
     
-    
+     public List<MovimientoEN> listarMovimientoFecha(String idCuenta, Date desde,Date hasta, String tipo){
+    	 if(tipo.equals("Todos")) {
+    		 return listarMovimiento(idCuenta);
+    	 }else {
+    		  
+         String jpql = "Select p FROM MovimientoEN p WHERE p.cuenta like '" + idCuenta+"' AND p.fechaMovimiento BETWEEN '"+desde+"' AND '"+hasta+"'"
+         		+ "AND p.tipoMovimiento LIKE '"+tipo+"'";
+         Query q = em.createQuery(jpql, MovimientoEN.class);
+
+          return q.getResultList();
+    	 }
+    	
+     }
     
 }

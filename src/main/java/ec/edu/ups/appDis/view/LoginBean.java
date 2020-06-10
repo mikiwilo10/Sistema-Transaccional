@@ -106,8 +106,8 @@ public class LoginBean implements Serializable {
 				idper = on.BuscarCorreo(p.getCorreo()).getCedulaSocio();
 
 				EmailClient.sendMail(p.getCorreo(), Asunto, CuerpoMail);
-				return "ultimo-movimiento?faces-redirect=true";
-
+				//return "ultimo-movimiento?faces-redirect=true";
+				return "inicio?faces-redirect=true";
 			} else {
 				String Asuntofail = " Inicio de Sesion Fallido";
 				String CuerpoMailfail = "Querido Usuario su intento de Sesion a sido Fallido en la fecha:" + fecha

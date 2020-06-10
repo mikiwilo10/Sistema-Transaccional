@@ -46,7 +46,7 @@ public class RegistroPersona extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().println("<h1>Hola mundo</h1>");
+		response.getWriter().println("<h1>SISTEMA TRANSACCIONAL</h1>");
 
 //		Persona p = new Persona();
 //		p.setNombre("wilmer");

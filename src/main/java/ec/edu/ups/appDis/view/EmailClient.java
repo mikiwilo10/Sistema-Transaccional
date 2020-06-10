@@ -9,7 +9,7 @@ public class EmailClient {
 
 	static void sendMail(String destino,String Asunto,String CuerpoMail) throws Exception {
 		String senderEmail = "appdisups@gmail.com";// change with your sender email
-		String senderPassword = "Patito.123@456";// change with your sender password
+		String senderPassword = "EMPF?1996_X";// change with your sender password
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");// Outgoing server requires authentication

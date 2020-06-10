@@ -11,6 +11,8 @@ import ec.edu.ups.appDis.dao.SocioDao;
 import ec.edu.ups.appDis.model.CuentaEN;
 import ec.edu.ups.appDis.model.MovimientoEN;
 import ec.edu.ups.appDis.model.SocioEN;
+
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -217,6 +219,10 @@ public class GestionBancariaON {
 	
 	 public List<MovimientoEN> listarMovimiento(String idCuenta){
 	        return movimientoDAO.listarMovimiento(idCuenta);
+	    }
+	 
+	 public List<MovimientoEN> listarMovimientoFecha(String idCuenta, Date desde, Date hasta, String tipo){
+	        return movimientoDAO.listarMovimientoFecha(idCuenta,desde,hasta,tipo);
 	    }
     
 }

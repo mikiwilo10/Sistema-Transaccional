@@ -1,71 +1,110 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.prime.com.tr/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.prime.com.tr/ui"> 
 
 
 
-
-<ui:composition template="template/template2.xhtml">
-	<ui:define name="content">
-		<h:form>
-		NumeroCuenta: <h:inputText value="#{movimientoBean.idCuenta}" />
-			<br />
-
-			<h:commandButton action="#{movimientoBean.listarMovimiento()}"
-				class="btn btn-primary btn-round" value="Ultimos Movimientos" />
-
-
-			<h:dataTable id="tblcapitulos"
-				value="#{movimientoBean.listarMovimiento()}" var="move"
-				class="table">
-				<h:column>
-					<f:facet name="header"># Cuenta</f:facet>
-					<h:outputText value="#{move.cuenta.idCuenta}" />
-
-				</h:column>
-
-				<h:column>
-					<f:facet name="header">Nombre</f:facet>
-					<h:outputText value="#{move.cuenta.socio.nombresSocio}" />
-
-				</h:column>
-				<h:column>
-					<f:facet name="header">Apellido</f:facet>
-					<h:outputText value="#{move.cuenta.socio.apelidosSocio}" />
-
-				</h:column>
-
-				<h:column>
-					<f:facet name="header">Fecha Ultima Transaccion</f:facet>
-					<h:outputText value="#{move.fechaMovimiento}" />
-				</h:column>
+		
+     <ui:composition template="template/template2.xhtml">
+         <ui:define name="content">
+         <h:form>
+         
+         
+	<h2 style="font-weight:bold ;">Resumen de la Cuenta</h2>
+	
+	<div class="row">
+	<div class="col-md-12">
+	
+	
+	
+		<div class="col-md-3">
+		<select value="#{movimientoBean.tipo_movi}" >
+			<option value="Todos">Todos</option>
+			<option value="Deposito">Deposito</option>
+			<option value="Retiro">Retiro</option>
+		</select>
+	
+		</div>
+		
+	
+	<div class="col-md-3">
+	<label for="start">Fecha Desde: </label>
+			<input type="date" id="start" name="trip-start"
+       value="#{movimientoBean.fechadesde}"
+       min="2020-01-01" max="2020-12-31"/>
+      
+		</div>
+		<div class="col-md-3">
+		
+		
+		<label for="start">Fecha Hasta: </label>
+			<input type="date" id="start" name="trip-start"
+       value="#{movimientoBean.fechahasta}"
+       min="2000-01-01" max="2030-12-31"/>
+       
+       </div>
+       <div class="col-md-3">
+       <h:commandButton class="btn btn-primary" value="Buscar"  
+       action="#{movimientoBean.listarMovimientoFecha(loginBean.listalogin.get(0).socio.cuentaen.idCuenta)}" >
+       <f:ajax render="tblcapitulos" execute="tbcapitulos"></f:ajax>
+       </h:commandButton>
+       
+       
+       </div>
+</div>
+ </div>
+		<h:dataTable id="tblcapitulos" value="#{movimientoBean.listarMovimiento(loginBean.listalogin.get(0).socio.cuentaen.idCuenta)}" 
+			var="move" class="table">
+			<h:column>
+				<f:facet name="header">Número Cuenta</f:facet>
+				<h:outputText value="#{move.cuenta.idCuenta}" />
 				
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+				<h:outputText value="#{move.cuenta.socio.nombresSocio}" />
+				
+			</h:column>
+			<h:column>
+				<f:facet name="header">Apellido</f:facet>
+				<h:outputText value="#{move.cuenta.socio.apelidosSocio}" />
+				
+			</h:column>
+			
 				<h:column>
-					<f:facet name="header">Transaccion</f:facet>
-					<h:outputText value="#{move.tipoMovimiento}" />
-				</h:column>
-
-
+				<f:facet name="header">Fecha Ultima Transaccion</f:facet>
+				<h:outputText value="#{move.fechaMovimiento}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Tipo de movimiento</f:facet>
+				<h:outputText value="#{move.tipoMovimiento}" />
+			</h:column>
+				
+			
 				<h:column>
-					<f:facet name="header">Saldo</f:facet>
-					<h:outputText value="#{move.cantidad}" />
-				</h:column>
-
-
-			</h:dataTable>
-
-			<br />
-			<br />
-			<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
-				icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
-				action="principal.xhtml" class="btn btn-youtube">
-			</h:commandButton>
-		</h:form>
-	</ui:define>
-</ui:composition>
-
+				<f:facet name="header">Saldo</f:facet>
+				<h:outputText value="#{move.cantidad}" />
+			</h:column>
+		
+		
+      
+		
+			
+		</h:dataTable>
+		
+		<br /> <br />
+					<h:commandButton value="Cerrar Sesion" title="Cerrar Sesion"
+						icon="ui-icon-power" actionListener="#{loginBean.cerrarSession()}"
+						action="index.xhtml" class="btn btn-youtube">
+					</h:commandButton>
+</h:form>
+ </ui:define>   
+          </ui:composition>  
+	
 
 </html>
