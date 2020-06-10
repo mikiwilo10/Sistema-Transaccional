@@ -8,8 +8,12 @@ package ec.edu.ups.appDis.view;
 import ec.edu.ups.appDis.business.GestionBancariaON;
 import ec.edu.ups.appDis.model.CuentaEN;
 import ec.edu.ups.appDis.model.SocioEN;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -88,9 +92,15 @@ public class SocioBean {
 	public String guardarDatosScocio() {
 
 		try {
+			newSocio.setClave(GenerarClave());
 			on.guardarSocio(newSocio);
+			
+			String Asunto = " Cuenta de Usuario";
+			String CuerpoMail = "Hola " + newSocio.getNombresSocio() + " Su clave de Inicio de Sesion es " +newSocio.getClave();
+			EmailClient.sendMail(newSocio.getCorreo(), Asunto, CuerpoMail);
+			
 			System.out.println("Socio Guardado...");
-
+			
 		} catch (Exception ex) {
 			System.out.println("Error al ingresarSocio[SocioBean]" + ex);
 		}
@@ -196,4 +206,40 @@ public class SocioBean {
 		return "listarCuentas?faces-redirect=true";
 	}
 
+	public String GenerarClave(){
+		String[] symbols = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
+		int length = 10;
+		String password = null;
+		try {
+			Random random = SecureRandom.getInstanceStrong();
+			StringBuilder sb = new StringBuilder(length);
+			for (int i = 0; i < length; i++) {
+			    int indexRandom = random.nextInt( symbols.length );
+			    sb.append( symbols[indexRandom] );
+			}
+			password = sb.toString();
+			//System.out.println("conta"+password);
+			
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    // as of JDK 8, this should return the strongest algorithm available to the JVM
+		return password;
+	}
+	
+	
+	String aleatorio=String.valueOf(GenerarClave());
+    
+    public String numero(){
+    return aleatorio;
+    }
+
+    public String getAleatorio() {
+        return aleatorio;
+    }
+
+    public void setAleatorio(String aleatorio) {
+        this.aleatorio = aleatorio;
+    }
+    
 }

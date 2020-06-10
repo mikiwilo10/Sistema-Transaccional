@@ -32,40 +32,58 @@ public class UsuarioAdmiDao {
 		return q.getResultList();
 
 	}
+
 	public UsuarioAdministrativo buscarUAdmin(int id) throws Exception {
 		return em.find(UsuarioAdministrativo.class, id);
 	}
+
 	public void deleteUAdmi(int id) throws Exception {
-		UsuarioAdministrativo s = buscarUAdmin(id);
-		em.remove(s);
+		// UsuarioAdministrativo s = em.find(UsuarioAdministrativo.class, id);
+		String jpql = "DELETE FROM UsuarioAdministrativo p WHERE p.idusuario = :id";
+		Query query = em.createQuery(jpql);
+		query.setParameter("id", id);
+		int deletedCount = query.executeUpdate();
+		// em.remove(s);
+		System.out.println("entities deleted: " + deletedCount);
 	}
-	
-	
-	
-	public UsuarioAdministrativo buscarUsuarioAdmi(String usuario)throws Exception {
-		UsuarioAdministrativo c=null;
+
+		
+//	private static void deleteEmployeeByName() {
+//	      System.out.println("-- delete employee by name 'Mike' --");
+//	      EntityManager em = entityManagerFactory.createEntityManager();
+//	      em.getTransaction().begin();
+//	      Query query = em.createQuery("DELETE FROM Employee e WHERE e.name = :employeeName ");
+//	      query.setParameter("employeeName", "Mike");
+//	      int rowsDeleted = query.executeUpdate();
+//	      System.out.println("entities deleted: " + rowsDeleted);
+//	      em.getTransaction().commit();
+//	      em.close();
+//	  }
+
+	public UsuarioAdministrativo buscarUsuarioAdmi(String usuario) throws Exception {
+		UsuarioAdministrativo c = null;
 		try {
 			String jpql = "SELECT p FROM UsuarioAdministrativo p " + "WHERE p.usuario LIKE :usuario";
-		TypedQuery<UsuarioAdministrativo> query = em.createQuery(jpql, UsuarioAdministrativo.class);
-		query.setParameter("usuario", usuario);
+			TypedQuery<UsuarioAdministrativo> query = em.createQuery(jpql, UsuarioAdministrativo.class);
+			query.setParameter("usuario", usuario);
 
-		 c= query.getSingleResult();
-		
+			c = query.getSingleResult();
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return c;
 	}
 
-	public UsuarioAdministrativo login(String usuario, String contrasena)throws Exception{
+	public UsuarioAdministrativo login(String usuario, String contrasena) throws Exception {
 		UsuarioAdministrativo p = null;
-		String jpql = "SELECT p FROM UsuarioAdministrativo p " + "WHERE p.usuario LIKE :usuario AND p.contrasena LIKE :contrasena";
+		String jpql = "SELECT p FROM UsuarioAdministrativo p "
+				+ "WHERE p.usuario LIKE :usuario AND p.contrasena LIKE :contrasena";
 
 		TypedQuery<UsuarioAdministrativo> query = em.createQuery(jpql, UsuarioAdministrativo.class);
 		query.setParameter("usuario", usuario);
 		query.setParameter("contrasena", contrasena);
-		
-   
+
 		try {
 			p = query.getSingleResult();
 			System.out.println("Encontrado");

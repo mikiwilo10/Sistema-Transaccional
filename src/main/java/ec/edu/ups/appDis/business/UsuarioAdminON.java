@@ -33,6 +33,11 @@ public class UsuarioAdminON {
 		
 	}
 	
+	public UsuarioAdministrativo UsuarioAdmi(int id)throws Exception {
+		return uddao.buscarUAdmin(id);
+		
+	}	
+	
 	
 	public UsuarioAdministrativo BuscarUsuario(String usuario) throws Exception{
 		return uddao.buscarUsuarioAdmi(usuario);

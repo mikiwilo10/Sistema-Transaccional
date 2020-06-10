@@ -96,15 +96,18 @@
 
 				<div>
 					<div>
-						<p:commandButton class="btn btn-primary"
+						<h:commandButton class="btn btn-primary"
 							action="#{registroUsuarioBean.guardarDatos()}" value="Guardar"
 							oncomplete="limpiarForm()" />
-
+							
+						
 					</div>
+
 				</div>
 
 
-			<script type="text/javascript">
+
+				<script type="text/javascript">
 				function limpiarForm(){  
 					document.getElementById("formulario").reset();
 				}

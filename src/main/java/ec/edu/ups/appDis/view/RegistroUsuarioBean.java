@@ -32,6 +32,8 @@ public class RegistroUsuarioBean {
 	private List<Rol> rols;
 
 	private int id;
+	
+	private static int iduser;
 
 	private List<UsuarioAdministrativo> listaUAdmi;
 
@@ -126,11 +128,11 @@ public class RegistroUsuarioBean {
 		}
 
 	}
-	public String eliminarUadmi(int id) throws Exception {
+	public String eliminarUadmi(int idu) throws Exception {
 
 		try {
-			onadmi.eliminarUAdmi(id);;
-			System.out.println("Administrador Eliminado..." +uadmi.getNombre());
+			onadmi.eliminarUAdmi(idu);
+			System.out.println("Administrador Eliminado..." +idu);
 
 		} catch (Exception ex) {
 			throw new Exception("Error al eliminar" + ex);
