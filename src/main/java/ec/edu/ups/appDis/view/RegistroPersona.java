@@ -14,11 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.appDis.business.LoginHON;
-import ec.edu.ups.appDis.business.PersonaON;
 import ec.edu.ups.appDis.business.RolON;
 import ec.edu.ups.appDis.business.UsuarioAdminON;
 import ec.edu.ups.appDis.dao.LoginHDao;
-import ec.edu.ups.appDis.dao.PersonaDao;
 import ec.edu.ups.appDis.dao.RolDao;
 import ec.edu.ups.appDis.dao.UsuarioAdmiDao;
 import ec.edu.ups.appDis.model.LoginHistoricos;
@@ -29,8 +27,12 @@ import ec.edu.ups.appDis.model.UsuarioAdministrativo;
 @WebServlet("/persona")
 public class RegistroPersona extends HttpServlet {
 
-	@Inject
-	private PersonaON on;
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3785458131672848839L;
 
 	@Inject
 	private UsuarioAdminON onadmi;
@@ -38,8 +40,6 @@ public class RegistroPersona extends HttpServlet {
 	@Inject
 	private RolON onrol;
 
-	@Inject
-	private LoginHON onlh;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -99,9 +99,9 @@ public class RegistroPersona extends HttpServlet {
 
 		UsuarioAdministrativo admi = new UsuarioAdministrativo();
 
-		admi.setNombre("Juan");
-		admi.setApellido("Fransisco");
-		admi.setUsuario("jfransisco");
+		admi.setNombre("Adminitrador");
+		admi.setApellido("Administrador");
+		admi.setUsuario("admin");
 		admi.setContrasena("cuenca");
 
 		UsuarioAdministrativo admi2 = new UsuarioAdministrativo();
@@ -120,15 +120,14 @@ public class RegistroPersona extends HttpServlet {
 		Rol rol3 = new Rol();
 		rol3.setNombre("Jefe de Credito");
 
-		Rol rol4 = new Rol();
-		rol4.setIdrol(2);
+		
 
 		onrol.crearRol(rol1);
 		onrol.crearRol(rol2);
 		onrol.crearRol(rol3);
 
 		admi.setRol(rol1);
-		admi2.setRol(onrol.buscar(3));
+		admi2.setRol(onrol.buscar(2));
 
 		onadmi.crearUsuarioAdmi(admi);
 		onadmi.crearUsuarioAdmi(admi2);
