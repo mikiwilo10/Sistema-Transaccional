@@ -8,6 +8,10 @@ package ec.edu.ups.appDis.view;
 import ec.edu.ups.appDis.business.GestionBancariaON;
 import ec.edu.ups.appDis.model.CuentaEN;
 import ec.edu.ups.appDis.model.MovimientoEN;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -36,8 +40,9 @@ public class MovimientoBean {
  
       private Date  fecha=new Date();
 
- 
-    public MovimientoEN getNewMovimiento() {
+      private String tipomovimiento;
+
+	public MovimientoEN getNewMovimiento() {
         return newMovimiento;
     }
 
@@ -55,7 +60,15 @@ public class MovimientoBean {
 
   
 
-    public Date getFecha() {
+    public String getTipomovimiento() {
+		return tipomovimiento;
+	}
+
+	public void setTipomovimiento(String tipomovimiento) {
+		this.tipomovimiento = tipomovimiento;
+	}
+
+	public Date getFecha() {
         return fecha;
     }
 
@@ -70,7 +83,10 @@ public class MovimientoBean {
        @PostConstruct
     public void init() {
         newMovimiento=new MovimientoEN();
-        
+        Date fecha1 = new Date();
+        fechadesde = fecha1;
+        fechahasta = fecha1;
+        tipo_movi="Todos";
     }
       
       public String guardarMovimiento(){
@@ -114,7 +130,7 @@ public class MovimientoBean {
          return on.listarMovimiento(idCuenta);
      }
      
-     private String idCuenta;
+     private String idCuenta ;
 
      public String getIdCuenta(){
          return idCuenta;
@@ -156,9 +172,47 @@ public class MovimientoBean {
 	}
      
      
-	 public List<MovimientoEN> listarMovimientoFecha (String idCuenta, Date desde, Date hasta, String tipo){
-         return on.listarMovimientoFecha(idCuenta,desde,hasta,tipo);
-     }
+	
     
-    
+	 
+	 public Date convertirFechas(String fecha2) {
+		 
+		 String dateStr = fecha2;
+		 DateFormat readFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+		 DateFormat writeFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+		 Date date = null;
+		 try {
+		     date = readFormat.parse(dateStr);
+		 } catch (ParseException e) {
+		     e.printStackTrace();
+		 }
+
+		 if (date != null) {
+		     String formattedDate = writeFormat.format(date);
+		 }
+		 
+		 return date;
+	 }
+	
+   
+	 /*
+	  * Movimiento fechas corregidos
+	  * 
+	  */
+	 
+	 
+	 public void loadFechas(String idCuenta) {
+			
+			//String tipo = String.valueOf(tipomovimiento);
+			
+			System.out.println(idCuenta+"-"+fechadesde+"---"+fechahasta+"--"+tipomovimiento);
+			listaMovimiento = on.listarPorFecha(idCuenta, fechadesde, fechahasta, tipomovimiento);
+			System.out.println(listaMovimiento);
+			
+		}
+	 
+	 
+	 
+	 
+	 
 }

@@ -24,23 +24,40 @@ public class SocioDao {
 	@PersistenceContext
 	private EntityManager em;
 
+	/*
+	 * metodo que permite crear un socio 
+	 */
 	public void insertSocio(SocioEN socio) throws Exception {
 		em.persist(socio);
 	}
+	
+	/*
+	 * metodo que permite buscar un socio por medio de su cedula
+	 */
 
 	public SocioEN readSocio(String cedulaSocio) throws Exception {
 		return em.find(SocioEN.class, cedulaSocio);
 	}
+	
+	/*
+	 * metodo que permite actualizar un socio 
+	 */
 
 	public void updateSocio(SocioEN socio) throws Exception {
 		em.merge(socio);
 	}
 
+	/*
+	 * metodo que permite eliminar un socio por medio de su cedula
+	 */
 	public void deleteSocio(String cedula) throws Exception {
 		SocioEN s = readSocio(cedula);
 		em.remove(s);
 	}
 
+	/*
+	 * metodo que permite ratornar listar los socio por medio de su cedula
+	 */
 	public List<SocioEN> getSocios(String filtro) throws Exception {
 		String jpql = "SELECT p FROM SocioEN p WHERE cedulaSocio LIKE :filtro";
 
@@ -50,7 +67,7 @@ public class SocioDao {
 	}
 
 	/*
-	 * 
+	 * metodo que permite retornar un socio por medio de su correo de usuario
 	 */
 	public SocioEN buscarCorreo(String correo)throws Exception {
 		SocioEN c=null;
@@ -66,6 +83,10 @@ public class SocioDao {
 		}
 		return c;
 	}
+	
+	/*
+	 * metodo que permite retornar un socio por medio de su correo de usuario y su clave
+	 */
 
 	public SocioEN login(String correo, String clave)throws Exception{
 		SocioEN p = null;
